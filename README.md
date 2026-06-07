@@ -35,13 +35,15 @@ Hit F12 in your browser to open DevTools, click on the sources tab, find the sou
 
 ![alt text](image.png)
 
+There is a manual way to initially get the code if you don't want to let CLI handle it. [The other way to get the code...](#the-other-way-to-get-the-code).
+
+**Rubber hits the road here**
+
 ```
-Can you import all of the files for this Vite app?
+Me: Can you import all of the files for this Vite app?
 https://orchard-harvest.<your-app-identifier>.gateway.prod.island.powerapps.com/
 ```
-
-
-There was some back and forth with the CLI; it was trying to get to the endpoint but was getting a 401 and needed authentication. It eventually asked me to Open **DevTools → Network** tab and find a successful request to this gateway, **Copy as cURL** then paste that into the CLI. If you want the alternate extraction path, jump to [The other way to get the code...](#the-other-way-to-get-the-code).
+There was some back and forth with the CLI; it was trying to get to the endpoint but was getting a 401 and needed authentication. It eventually asked me to Open **DevTools → Network** tab and find a successful request to this gateway, **Copy as cURL** then paste that into the CLI. 
 
 ![alt text](image-3.png)
 
