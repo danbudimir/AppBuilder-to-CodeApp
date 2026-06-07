@@ -310,8 +310,11 @@ At the end of this process you have:
 1. Install **DevTools - Sources downloader** into your browser (works in Edge or Chrome). 
 https://chromewebstore.google.com/detail/devtools-sources-download/hhfkbeloejjheeiihhjndfcogjhejoek
 2. In **Edit** mode, hit F12 to see the dev tools.
-3. CLick the source tab to ensure you see **orchard-harvest**.
+3. Click the source tab to ensure you see **orchard-harvest**.
 4. Click **Download sources**, the sources.zip file will eventually show up in your downloads folder.
+![alt text](image-4.png)
 5. Standard Windows zip tools were not working to opehn the file so I used WinRAR.
 6. Extract all files from the root of the **orchard-harvest** folder to a folder.
 7. Open the folder with VS Code and let CLI take it from there.
+
+
