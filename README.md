@@ -1,10 +1,10 @@
-# Turning an M365 Frontier App Builder App into a Power Apps Code App using GitHub Copilot
+# Turning an M365 App Builder App into a Power Apps Code App using GitHub Copilot
 
-You've vibed a cool app in **Microsoft 365 Frontier App Builder**, but now you want to run it localy in node, after that you want scaffold it as a Power Apps Code App so you can connect to Oracle, SQL server, custom connectors etc.
+You've vibed a cool app in **Microsoft 365 App Builder**, but now you want to run it locally in Node, after that you want scaffold it as a Power Apps Code App so you can connect to Oracle, SQL Server, custom connectors, etc.
 
-This guide documents how to take a live app built with the **Microsoft 365 Frontier App Builder** — extract its React/TypeScript source, and merge it into a **Power Apps Code App** Vite template. The end result is a fully working local project integrated with the Power Apps SDK, wired to Dataverse, and runnable inside the Power Apps host via Local Play.
+This guide documents how to take a live app built with the **Microsoft 365 App Builder** — extract its React/TypeScript source, and merge it into a **Power Apps Code App** Vite template. The end result is a fully working local project integrated with the Power Apps SDK, wired to Dataverse, and runnable inside the Power Apps host via Local Play.
 
-This entire exercise, start to finish was done using GitHub Copilot in VSCode, no manual intervention was required other than a narual languge coversation and on one occasion providing a reference from the DevTools Network tab.
+This entire exercise, start to finish, was done using GitHub Copilot in VSCode, no manual intervention was required other than a natural language conversation and on one occasion providing a reference from the DevTools Network tab so the CLI had a token it could use to authenticate.
 
 ---
 
@@ -12,6 +12,8 @@ This entire exercise, start to finish was done using GitHub Copilot in VSCode, n
 
 | Tool | Version | Why |
 |------|---------|-----|
+| VS Code | latest | Gotta have that... |
+| GitHub Copilot (CLI) | latest | Gotta have that as well... |
 | Node.js | ≥ 18 | Runtime for Vite dev server |
 | npm | ≥ 9 | Package manager |
 | [Power Platform CLI (pac)](https://learn.microsoft.com/en-us/power-platform/developer/cli/introduction) | latest | `pac code init`, auth |
@@ -21,34 +23,36 @@ This entire exercise, start to finish was done using GitHub Copilot in VSCode, n
 
 ## Background
 
-The starting app was built with the **M365 Frontier App Builder** and hosted at a Power Apps gateway URL:
+The starting app was built with the **M365 App Builder** and hosted at a Power Apps gateway URL:
 
 ```
 https://orchard-harvest.<your-app-identifier>.gateway.prod.island.powerapps.com
 ```
 
-In order to get this URL you must first **Edit** the app in m365 Copilot.  Only edit mode with expose the endpoint that houses the html, Typescript, css, etc. files.  While vibing (editing), the Typescript files are dynamically updated and compiled to Javascript, whentou **Play** the app, the Typescript files have already been compiled and are not visible.
+In order to get this URL you must first **Edit** the app in M365 Copilot.  Only edit mode will expose the endpoint that houses the HTML, TypeScript, CSS, etc. files.  While vibing (editing), the TypeScript files are dynamically updated and compiled to JavaScript, when you **Play** the app, the TypeScript files have already been compiled and are not visible.
 
-Hit F12 in your browser to open dev-tools, click on the sources tab, find the source that begins with orchard-harvest. This the the endpoint needed to start the conversation.
+Hit F12 in your browser to open DevTools, click on the sources tab, find the source that begins with orchard-harvest. This is the endpoint needed to start the conversation.
 
 ![alt text](image.png)
 
 ```
-Can you import all of the files for this vite app?
+Can you import all of the files for this Vite app?
 https://orchard-harvest.<your-app-identifier>.gateway.prod.island.powerapps.com/
 ```
-There was some back and forth with the cli it was trying to get to the endpoint but was getting a 401 and needed authentication.  It eventually asked me to Open **DevTools → Network** tab and find a successful request to this gateway, **Copy as cURL** then paste that into the cli.
+
+
+There was some back and forth with the CLI; it was trying to get to the endpoint but was getting a 401 and needed authentication. It eventually asked me to Open **DevTools → Network** tab and find a successful request to this gateway, **Copy as cURL** then paste that into the CLI. If you want the alternate extraction path, jump to [The other way to get the code...](#the-other-way-to-get-the-code).
 
 ![alt text](image-3.png)
 
-After that it was just a conversation, the cli had all it needed to download the app and make the needed modifications to eventually get to a fully function node app running on my local machine.
+After that it was just a conversation, the CLI had all it needed to download the app and make the needed modifications to eventually get to a fully functional Node app running on my local machine.
 
 ```
-cli: If you want, I can now clean this into a runnable local Vite project structure by generating missing config files from the imported source and wiring npm scripts.
+CLI: If you want, I can now clean this into a runnable local Vite project structure by generating missing config files from the imported source and wiring npm scripts.
 
-me: yes, do that, then run the app
+Me: yes, do that, then run the app
 ```
-Initaly the screen was not populating so I told cli
+Initially the screen was not populating, so I told CLI
 
 ```
 I see a white screen, fix it.
@@ -63,28 +67,28 @@ So it did.
 ## Add code app scaffolding
 
 ```
-**me:** I want to make this into a powerapps code app. Using this template, can you integrate only what is needed from the template so I can run this in power platform?
+**Me:** I want to make this into a Power Apps Code App. Using this template, can you integrate only what is needed from the template so I can run this in power platform?
 https://github.com/microsoft/PowerAppsCodeApps/tree/main/templates/vite
 
-**cli**: Done. If you want, I can next add a minimal data-source connection setup flow (connection references in power.config.json) so you can bind real Power Platform data instead of local in-memory services.
+**CLI**: Done. If you want, I can next add a minimal data-source connection setup flow (connection references in power.config.json) so you can bind real Power Platform data instead of local in-memory services.
 
 **me**: yes
 
-**cli**: If you want, I can do the next step for you now and add a specific Dataverse table (for example account or your custom building/room/issue tables) directly.
+**CLI**: If you want, I can do the next step for you now and add a specific Dataverse table (for example account or your custom building/room/issue tables) directly.
 
 **me**: yes, use account
 
-**cli**: If you want, I can add the next tables the same way (for example contact, or your custom building, room, issue Dataverse tables if they already exist).
+**CLI**: If you want, I can add the next tables the same way (for example contact, or your custom building, room, issue Dataverse tables if they already exist).
 
 **me**: you've added account to the available datasources. can you add a tab to the app and a few fields from account and allow me to scroll through the available accounts in the table?
 
-**cli**: Implemented. You now have an Accounts tab that loads and scrolls through Dataverse account records.
+**CLI**: Implemented. You now have an Accounts tab that loads and scrolls through Dataverse account records.
 ```
 
 ![alt text](image-2.png)
 
 ---
-## tl;dr (This was all written by cli, I've left it here purely for reference and morbid curiosity)
+## tl;dr (This was all written by CLI, I've left it here purely for reference and morbid curiosity)
 
 The key packages that distinguish a Code App from a plain Vite app:
 
@@ -95,9 +99,9 @@ The key packages that distinguish a Code App from a plain Vite app:
 
 ---
 
-## Step 3 — Merge the Frontier App Source into the Code App Template
+## Step 3 — Merge the App Source into the Code App Template
 
-Paste or place the recovered `.tsx` / `.ts` / `.css` files into `src/`, replacing the template's placeholder pages. The typical structure you'll find in a Frontier App Builder app (which maps cleanly onto the Code App template structure):
+Paste or place the recovered `.tsx` / `.ts` / `.css` files into `src/`, replacing the template's placeholder pages. The typical structure you'll find in an App Builder app (which maps cleanly onto the Code App template structure):
 
 ```
 src/
@@ -298,3 +302,14 @@ At the end of this process you have:
 - [@microsoft/power-apps npm](https://www.npmjs.com/package/@microsoft/power-apps)
 - [@microsoft/power-apps-vite npm](https://www.npmjs.com/package/@microsoft/power-apps-vite)
 - [React Router v6 basename](https://reactrouter.com/en/main/router-components/browser-router#basename)
+
+
+## The other way to get the code...
+1. Install **DevTools - Sources downloader** into your browser (works in Edge or Chrome). 
+https://chromewebstore.google.com/detail/devtools-sources-download/hhfkbeloejjheeiihhjndfcogjhejoek
+2. In **Edit** mode, hit F12 to see the dev tools.
+3. CLick the source tab to ensure you see **orchard-harvest**.
+4. Click **Download sources**, the sources.zip file will eventually show up in your downloads folder.
+5. Standard Windows zip tools were not working to opehn the file so I used WinRAR.
+6. Extract all files from the root of the **orchard-harvest** folder to a folder.
+7. Open the folder with VS Code and let CLI take it from there.
