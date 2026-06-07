@@ -4,7 +4,7 @@ You've vibed a cool app in **Microsoft 365 App Builder**, but now you want to ru
 
 This guide documents how to take a live app built with the **Microsoft 365 App Builder** — extract its React/TypeScript source, and merge it into a **Power Apps Code App** Vite template. The end result is a fully working local project integrated with the Power Apps SDK, wired to Dataverse, and runnable inside the Power Apps host via Local Play.
 
-This entire exercise, start to finish, was done using GitHub Copilot in VSCode, no manual intervention was required other than a natural language conversation and on one occasion providing a reference from the DevTools Network tab so the CLI had a token it could use to authenticate.
+This entire exercise, start to finish, was done using GitHub Copilot in VS Code, no manual intervention was required other than a natural language conversation and on one occasion providing a reference from the DevTools Network tab so the CLI had a token it could use to authenticate.
 
 ---
 
