@@ -1,6 +1,6 @@
 # Turning an M365 App Builder App into a Power Apps Code App using GitHub Copilot
 
-You've vibed a cool app in **Microsoft 365 App Builder**, but now you want to run it locally in Node, after that you want scaffold it as a Power Apps Code App so you can connect to Oracle, SQL Server, custom connectors, etc.
+You've vibed a cool app in **Microsoft 365 App Builder**, but now you want to run it locally in Node, after that you want scaffold it as a **Power Apps Code App** so you can connect to Oracle, SQL Server, Snowflake, Custom connectors, etc.
 
 This guide documents how to take a live app built with the **Microsoft 365 App Builder** — extract its React/TypeScript source, and merge it into a **Power Apps Code App** Vite template. The end result is a fully working local project integrated with the Power Apps SDK, wired to Dataverse, and runnable inside the Power Apps host via Local Play.
 
