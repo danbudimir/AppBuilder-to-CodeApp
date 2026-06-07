@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "appId": null,
+  "appDisplayName": "FacilityWatch",
+  "region": "prod",
+  "environmentId": "066b93e5-679e-ef7a-a5cd-c4806fe5fb0f",
+  "description": "Facility issue monitoring code app",
+  "buildPath": "dist",
+  "buildEntryPoint": "index.html",
+  "localAppUrl": "http://localhost:5173",
+  "logoPath": "favicon.ico",
+  "connectionReferences": {},
+  "databaseReferences": {
+    "default.cds": {
+      "dataSources": {
+        "accounts": {
+          "entitySetName": "accounts",
+          "logicalName": "account",
+          "isHidden": false
+        }
+      },
+      "environmentVariableName": ""
+    }
+  }
+}

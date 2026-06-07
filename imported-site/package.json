@@ -1,0 +1,41 @@
+{
+  "name": "facility-watch-imported",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "powerapps:run": "npx power-apps run",
+    "powerapps:list-connections": "npx power-apps list-connections",
+    "powerapps:list-connection-refs": "npx power-apps list-connection-references",
+    "powerapps:list-datasets": "npx power-apps list-datasets",
+    "powerapps:list-tables": "npx power-apps list-tables",
+    "powerapps:add-datasource": "npx power-apps add-data-source"
+  },
+  "dependencies": {
+    "@microsoft/power-apps": "^1.1.9",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tanstack/react-query": "^5.83.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "d3": "^7.9.0",
+    "lucide-react": "^0.536.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.1",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@microsoft/power-apps-vite": "^1.0.2",
+    "@types/d3": "^7.4.3",
+    "@types/node": "^22.15.21",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.4.1",
+    "typescript": "^5.7.3",
+    "vite": "^6.3.5"
+  }
+}
