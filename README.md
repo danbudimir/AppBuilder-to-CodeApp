@@ -31,6 +31,8 @@ https://orchard-harvest.<your-app-identifier>.gateway.prod.island.powerapps.com
 
 In order to get this URL you must first **Edit** the app in M365 Copilot.  Only edit mode will expose the endpoint that houses the HTML, TypeScript, CSS, etc. files.  While vibing (editing), the TypeScript files are dynamically updated and compiled to JavaScript, when you **Play** the app, the TypeScript files have already been compiled and are not visible.
 
+![alt text](image-5.png)
+
 Hit F12 in your browser to open DevTools, click on the sources tab, find the source that begins with orchard-harvest. This is the endpoint needed to start the conversation.
 
 ![alt text](image.png)
